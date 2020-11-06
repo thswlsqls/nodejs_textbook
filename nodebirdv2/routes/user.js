@@ -16,4 +16,6 @@ router.post('/:id/follow', isLoggedIn, async (req, res, next) => {
   }
 }); //다른 사용자를 팔로우할 수 있는 라우터이다.
 
+
+
 module.exports = router;

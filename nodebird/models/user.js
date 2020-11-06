@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 module.exports = (sequelize, DataTypes) => (
     sequelize.define('user', {
       email: {
@@ -26,4 +27,34 @@ module.exports = (sequelize, DataTypes) => (
       timestamps: true,
       paranoid: true,
     })
+=======
+module.exports = (sequelize, DataTypes) => (
+    sequelize.define('user', {
+      email: {
+        type: DataTypes.STRING(40),
+        allowNull: true,
+        unique: true,
+      },
+      nick: {
+        type: DataTypes.STRING(15),
+        allowNull: false,
+      },
+      password: {
+        type: DataTypes.STRING(100),
+        allowNull: true,
+      },
+      provider: {
+        type: DataTypes.STRING(10),
+        allowNull: false,
+        defaultValue: 'local',
+      },
+      snsId: {
+        type: DataTypes.STRING(30),
+        allowNull: true,
+      },
+    }, {
+      timestamps: true,
+      paranoid: true,
+    })
+>>>>>>> b945e65fc137f6db9717bb2120243867a83a8a16
   );
