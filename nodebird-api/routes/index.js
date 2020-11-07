@@ -1,5 +1,5 @@
 const express = require('express');
-const uuidv4 = require('uuidv4');
+const uuidv4 = require('uuid/v4');
 const { User, Domain } = require('../models');
 
 const router = express.Router();
@@ -36,4 +36,4 @@ router.post('/domain', (req, res, next) => {
     });
 });
 
-module.exports = router;
+module.exports = router; 

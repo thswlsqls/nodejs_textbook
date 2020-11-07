@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "rootnqkrwhgdk1!",
-    "database": "nodebird",
+    "database": "nodebirdv2",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
