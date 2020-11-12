@@ -1,4 +1,4 @@
-exports.isLoggedIn = (req, res, next) => {
+  exports.isLoggedIn = (req, res, next) => {
     if (req.isAuthenticated()) { //passport가 req객체에 불린값을 반환하는 IsAuthenticated메서드를 추가한다.
       next();
     } else {

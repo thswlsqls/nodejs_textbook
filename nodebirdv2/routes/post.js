@@ -55,6 +55,16 @@ router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
   }
 });//게시글 업로드를 처리하는 라우터이다.
 
+router.delete('/:id', async (req, res, next) => {
+  try {
+    await Post.destroy({ where: { id: req.params.id, userId: req.user.id }});
+    res.send('OK');
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+});
+
 router.get('/hashtag', async (req, res, next) => { //해시태그로 조회하는 라우터이다.
     const query = req.query.hashtag; //쿼리스트링으로 해시태그 이름을 받는다.
     if (!query) {
@@ -77,4 +87,26 @@ router.get('/hashtag', async (req, res, next) => { //해시태그로 조회하�
     }
   });
   
+  router.post('/:id/like', async (req, res, next) => {
+    try {
+      const post = await Post.findOne({ where: { id: req.params.id }});
+      await post.addLiker(req.user.id);
+      res.send('OK');
+    }catch (error) {
+      console.error(error);
+      next(error);
+    }
+  });
+
+  router.delete('/:id/like', async (req, res, next) => {
+    try {
+      const post = await Post.findOne({ where: { id: req.params.id }});
+      await post.removeLiker(req.user.id);
+      res.send('OK');
+    }catch (error) {
+      console.error(error);
+      next(error);
+    }
+  });
+
 module.exports = router;

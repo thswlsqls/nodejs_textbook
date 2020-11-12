@@ -18,13 +18,18 @@ router.get('/join', isNotLoggedIn, (req, res) => {
 
 router.get('/', (req, res, next) => {
   Post.findAll({
-    include: {
+    include: [{
       model: User,
       attributes: ['id', 'nick'],
-    },
+    }, {
+      model: User,
+      attributes: ['id', 'nick'],
+      as: 'Liker',
+    }],
     order: [['createdAt', 'DESC']],
   }) //db에서 게시글을 조회한다.
     .then((posts) => {
+      console.log(posts);
       res.render('main', {
         title: 'NodeBird',
         twits: posts,
